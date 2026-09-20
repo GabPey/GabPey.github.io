@@ -25,10 +25,10 @@ git add -A && git commit -m "Publish the 8-bit site" && git push
 |---|---|
 | `data.js` | **every string on the page** — quest log, project write-ups, contact |
 | `chart.js` | **generated** from `Bios/GitHub-Profile/constellation8.py`; do not hand-edit |
-| `scenes.js` | the three canvas animations (rat + trace, chip + ECG, constellation + word) |
+| `scenes.js` | the three canvas animations, **plus the waving avatar sprite** |
 | `app.js` | renders the chart as live SVG, fills the quest log, hash router for panels |
 | `assets/PressStart2P.ttf` | the pixel font, SIL Open Font License, self-hosted |
-| `assets/avatar.png` | 34x46 sprite traced from the 2026 e-photo |
+| `assets/` | just the font now — the avatar is a **sprite drawn in `scenes.js`**, not an image |
 
 ### Keeping the chart in sync with the README
 The star chart is the same graph as the profile README's. `chart.js` is exported from the Python

@@ -11,7 +11,7 @@
 * { box-sizing: border-box; }
 html { background: var(--paper); }
 body {
-  margin: 0; padding: 0 20px 64px; background: var(--paper); color: var(--soft);
+  margin: 0; padding: 0 20px 64px; overflow-wrap: break-word; background: var(--paper); color: var(--soft);
   font-family: "Press Start 2P", ui-monospace, Menlo, Consolas, monospace;
   font-size: 11px; line-height: 2.1; -webkit-font-smoothing: none;
   max-width: 1120px; margin-inline: auto;
@@ -23,8 +23,17 @@ a { color: var(--learning); }
 .skip:focus { left: 8px; top: 8px; background: var(--bayes); color: #000; padding: 8px; z-index: 9; }
 
 .hero { display: flex; gap: 24px; align-items: flex-start; padding: 48px 0 8px; flex-wrap: wrap; }
-#avatar { width: 136px; height: 184px; flex: none; }
-.hero-text { flex: 1 1 320px; min-width: 0; }
+#avatar { width: 138px; height: 204px; flex: none; }
+.hero-text { flex: 1 1 300px; min-width: 0; }
+.langs { flex: 0 1 280px; min-width: 0; }
+.langs h2 { font-size: 11px; color: var(--learning); margin: 4px 0 16px; letter-spacing: 2px; }
+#lang-list { margin: 0; }
+.lang { margin: 0 0 12px; }
+.lang dt { color: var(--soft); font-size: 10px; margin-bottom: 5px; display: flex; justify-content: space-between; gap: 10px; }
+.lang dt .lv { color: var(--faint); }
+.lang dd { margin: 0; display: flex; gap: 2px; flex-wrap: wrap; }
+.lang .cell { width: 8px; height: 13px; background: var(--line); }
+.lang .cell.on { background: var(--learning); }
 h1 { font-size: 20px; color: var(--ink); margin: 0 0 14px; letter-spacing: 1px; }
 #title { color: var(--bayes); margin: 0 0 6px; }
 #hook { color: var(--soft); margin: 0 0 18px; }
@@ -74,10 +83,18 @@ svg#chart text { font-family: "Press Start 2P", monospace; }
 footer { border-top: 2px solid var(--line); margin-top: 44px; padding-top: 24px; font-size: 10px; }
 .colophon { color: var(--faint); font-size: 9px; }
 
+@media (max-width: 900px) { .langs { flex-basis: 100%; } }
 @media (max-width: 620px) {
   body { font-size: 10px; padding: 0 14px 40px; }
   h1 { font-size: 15px; }
-  #avatar { width: 102px; height: 138px; }
+  .hero-text { flex-basis: 100%; }
+  #avatar { width: 104px; height: 154px; }
+  .lang .cell { width: 7px; height: 12px; }
+}
+@media (max-width: 430px) {
+  h1 { font-size: 12px; letter-spacing: 0; }
+  body { font-size: 9px; }
+  .lang .cell { width: 6px; }
   .hero { gap: 16px; padding-top: 32px; }
   .panel { padding: 0; }
   .panel-inner { margin: 0; border: none; padding: 20px; min-height: 100%; }

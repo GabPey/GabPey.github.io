@@ -195,7 +195,79 @@
     }
   }
 
+
+  /* ---------- the waving avatar in the header ---------- */
+  var GUY = [
+    ".......................",
+    ".......OOOOOO..........",
+    "......OHHHHHHO.........",
+    ".....OHHHHHHHHO........",
+    ".....OHHHHHHHHHO.......",
+    "....OHHHHHHHHHHO.......",
+    "....OHSSSSSSSSHO..OOO..",
+    "....OHSSSSSSSSSO.OSSSO.",
+    "....OSSESSSSESSO.OSSSO.",
+    "....OSSSSSSSSSSO.OSSSO.",
+    "....OSSSSSSSSSSO..OSSO.",
+    ".....OSSSSSSSSO...OSSO.",
+    ".....OSSSSSSSSO...OSSO.",
+    "......OSSSSSSO....OSSO.",
+    ".......OSSSSO....OSSO..",
+    "......OBBBBBBO...OSSO..",
+    ".....OBBBBBBBBO.OSSO...",
+    "....OBBBBBBBBBBOSSO....",
+    "...OSOBBBBBBBBBBO......",
+    "...OSOBBBBBBBBBO.......",
+    "...OSOBBBBBBBBBO.......",
+    "...OSOBBBBBBBBBO.......",
+    "....OOBBBBBBBBO........",
+    ".....OBBBBBBBBO........",
+    ".....OPPPPPPPPO........",
+    ".....OPPPPPPPPO........",
+    ".....OPPPPPPPPO........",
+    ".....OPPPOOPPPO........",
+    ".....OPPO..OPPO........",
+    ".....OPPO..OPPO........",
+    ".....OPPO..OPPO........",
+    "....OFFFO..OFFFO.......",
+    "....OOOOO..OOOOO.......",
+    "......................."
+  ];
+  var GUYC = { "O": "#140f1a", "H": "#2a1d22", "S": "#d69e76", "E": "#140f1a",
+               "B": "#3b4f80", "P": "#2a3358", "F": "#4a3326" };
+
+  function guyRow(y, frame) {
+    var row = GUY[y];
+    // the wave: on the second frame the raised forearm tips one column outward
+    if (frame && y >= 6 && y <= 13) return row.slice(0, 16) + "." + row.slice(16, -1);
+    return row;
+  }
+
+  function avatar(canvas, scale) {
+    var W = GUY[0].length, H = GUY.length;
+    canvas.width = W * scale; canvas.height = H * scale;
+    var ctx = canvas.getContext("2d");
+    ctx.imageSmoothingEnabled = false;
+    var t = 0, raf = null;
+    function frame() {
+      var f = Math.floor(t / 26) % 2;                // a slow, friendly wave
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (var y = 0; y < H; y++) {
+        var row = guyRow(y, f);
+        for (var x = 0; x < row.length; x++) {
+          if (row[x] === ".") continue;
+          px(ctx, x * scale, y * scale, scale, scale, GUYC[row[x]]);
+        }
+      }
+      t++;
+      if (!reduced) raf = requestAnimationFrame(frame);
+    }
+    frame();
+    return { stop: function () { if (raf) cancelAnimationFrame(raf); } };
+  }
+
   window.SCENES = {
+    avatar: avatar,
     make: function (canvas, kind) {
       if (kind === "photosvi") return new Scene(canvas, 200, 96, photosvi);
       if (kind === "heart") return new Scene(canvas, 200, 96, heart);

@@ -25,6 +25,24 @@
       ' &nbsp;·&nbsp; <a href="mailto:' + D.contact.email + '">' + D.contact.email + '</a>';
   }
 
+  function languages() {
+    var dl = $("lang-list");
+    D.languages.forEach(function (l) {
+      var wrap = document.createElement("div"); wrap.className = "lang";
+      var dt = document.createElement("dt");
+      dt.innerHTML = '<span>' + l.name + '</span><span class="lv">' + l.level + '</span>';
+      var dd = document.createElement("dd");
+      dd.setAttribute("aria-label", l.level);
+      var cells = 16, on = Math.round(l.pct / 100 * cells);
+      for (var i = 0; i < cells; i++) {
+        var c = document.createElement("span");
+        c.className = "cell" + (i < on ? " on" : "");
+        dd.appendChild(c);
+      }
+      wrap.appendChild(dt); wrap.appendChild(dd); dl.appendChild(wrap);
+    });
+  }
+
   function questCard(q, kind, tag) {
     var d = document.createElement(kind === "done" ? "li" : "div");
     d.className = "quest" + (kind === "current" ? " is-current" : kind === "next" ? " is-next" : "");
@@ -154,7 +172,8 @@
   }
 
   /* ---------------- go ---------------- */
-  text(); quests(); chart();
+  text(); languages(); quests(); chart();
+  window.SCENES.avatar($("avatar"), 6);
   $("panel-close").addEventListener("click", function () { location.hash = ""; });
   $("panel").addEventListener("click", function (e) { if (e.target === $("panel")) location.hash = ""; });
   document.addEventListener("keydown", function (e) {

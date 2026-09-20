@@ -4,8 +4,8 @@ window.DATA = {
     name: "GABRIEL PEYTRAL BORJA",
     title: "COMPUTATIONAL AND MATHEMATICAL BIOLOGIST",
     hook: "(I LIKE COMPUTERS, MATH AND LIFE SCIENCES)",
-    blurb: "I build probabilistic models of things that are alive and noisy — hearts, neurons, " +
-           "and lately the way a person learns a language."
+    blurb: "I like working with computational and mathematical models of things that are alive " +
+           "and noisy — hearts, neurons, and lately the way a person learns a language."
   },
 
   quests: {
@@ -30,7 +30,7 @@ window.DATA = {
       name: "M2 APPLIED MATHEMATICS & STATISTICS",
       where: "Aix-Marseille Université", when: "2025 -",
       loot: "TIGER excellence scholarship",
-      note: "Computational and Mathematical Biology track. The year that decides what the doctorate is about."
+      note: "Computational and Mathematical Biology track."
     },
     next: {
       name: "SIX-MONTH RESEARCH INTERNSHIP",
@@ -75,6 +75,14 @@ window.DATA = {
       note: "Private while it is still becoming itself."
     }
   },
+
+  // As published on the older site build (Site/data.js) - his own figures.
+  languages: [
+    { name: "SPANISH", level: "NATIVE", pct: 100 },
+    { name: "ENGLISH", level: "C1", pct: 85 },
+    { name: "FRENCH",  level: "C1", pct: 85 },
+    { name: "GERMAN",  level: "A2", pct: 30 }
+  ],
 
   contact: { github: "GabPey", email: "gpeytralborja@gmail.com" }
 };
