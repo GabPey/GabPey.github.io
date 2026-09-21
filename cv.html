@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gabriel Peytral Borja — CV</title>
+<meta name="description" content="Curriculum vitae of Gabriel Peytral Borja, in English (two pages) and French (one page).">
+<link rel="stylesheet" href="cv.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%2306050f'/><rect x='7' y='3' width='2' height='2' fill='%239b6dff'/><rect x='3' y='8' width='2' height='2' fill='%23ffaa44'/><rect x='11' y='9' width='2' height='2' fill='%233fd6a0'/></svg>">
+<script src="cv-data.js"></script>
+<script>
+  // Private details (phone, DOB, unpublished numbers) exist only in the vault, next to this
+  // folder, and are loaded only on request. On the live site the file does not exist.
+  if (new URLSearchParams(location.search).get("private") === "1")
+    document.write('<script src="../CV/cv-private.js"><\/script>');
+</script>
+</head>
+<body>
+<nav class="toolbar" aria-label="CV options">
+  <a class="home" href="./">← gabpey.github.io</a>
+  <span class="switch">
+    <a id="to-en" href="?lang=en">English · 2 pages</a>
+    <a id="to-fr" href="?lang=fr">Français · 1 page</a>
+  </span>
+  <span class="dl">
+    PDF:
+    <a href="cv/CV-Gabriel-Peytral-Borja-EN.pdf" download>English</a>
+    <a href="cv/CV-Gabriel-Peytral-Borja-FR.pdf" download>Français</a>
+  </span>
+</nav>
+<main id="cv"></main>
+<script src="cv.js"></script>
+</body>
+</html>

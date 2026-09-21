@@ -27,6 +27,10 @@ git add -A && git commit -m "Publish the 8-bit site" && git push
 | `chart.js` | **generated** from `Bios/GitHub-Profile/constellation8.py`; do not hand-edit |
 | `scenes.js` | the three canvas animations, **plus the waving avatar sprite** |
 | `app.js` | renders the chart as live SVG, fills the quest log, hash router for panels |
+| `cv.html` · `cv.css` · `cv.js` | the printable CV, `?lang=en` (2 pp) / `?lang=fr` (1 p) |
+| `cv-data.js` | **every string on the CV**, EN + FR. Public; private details live in `../CV/cv-private.js` (never copy that) |
+| `cv/*.pdf` | **generated** by `70-Documents/CV/build-cv.sh`; rebuild after editing `cv-data.js` |
+| `assets/inter-*.woff2`, `sourceserif-*.woff2`, `photo.jpg` | CV fonts (OFL) and photo |
 | `assets/PressStart2P.ttf` | the pixel font, SIL Open Font License, self-hosted |
 | `assets/` | just the font now — the avatar is a **sprite drawn in `scenes.js`**, not an image |
 

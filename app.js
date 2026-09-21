@@ -22,7 +22,10 @@
     $("blurb").textContent = D.me.blurb;
     $("contact").innerHTML =
       'GITHUB <a href="https://github.com/' + D.contact.github + '">@' + D.contact.github + '</a>' +
-      ' &nbsp;·&nbsp; <a href="mailto:' + D.contact.email + '">' + D.contact.email + '</a>';
+      ' &nbsp;·&nbsp; <a href="mailto:' + D.contact.email + '">' + D.contact.email + '</a>' +
+      ' &nbsp;·&nbsp; CV <a href="cv.html?lang=en">EN</a> / <a href="cv.html?lang=fr">FR</a>' +
+      ' (PDF <a href="cv/CV-Gabriel-Peytral-Borja-EN.pdf" download>EN</a>' +
+      ' / <a href="cv/CV-Gabriel-Peytral-Borja-FR.pdf" download>FR</a>)';
   }
 
   function languages() {
