@@ -1,8 +1,9 @@
-// Renders cv-data.js into A4 pages. ?lang=en|fr picks the version; ?private=1 merges
+// Renders cv-data.js into A4 pages. ?lang=en|fr|es picks the version; ?private=1 merges
 // ../CV/cv-private.js if it was loaded (local builds only).
 (function () {
   var Q = new URLSearchParams(location.search);
-  var lang = Q.get("lang") || ((navigator.language || "").slice(0, 2) === "fr" ? "fr" : "en");
+  var nav = (navigator.language || "").slice(0, 2);
+  var lang = Q.get("lang") || (nav === "fr" || nav === "es" ? nav : "en");
   if (!window.CV[lang]) lang = "en";
   var S = window.CV.shared, L = window.CV[lang], P = window.CV_PRIVATE || null;
 
@@ -10,12 +11,12 @@
   document.documentElement.dataset.lang = lang;
   document.getElementById("to-" + lang).setAttribute("aria-current", "page");
   // Keep ?private=1 when switching language locally.
-  if (P) ["en", "fr"].forEach(function (l) {
+  if (P) ["en", "fr", "es"].forEach(function (l) {
     document.getElementById("to-" + l).href = "?lang=" + l + "&private=1";
   });
 
   // Section colour = the site's four lanes (bayes, systems, neuro, learning).
-  var LANE = { research: "bayes", education: "systems", work: "neuro", projects: "learning" };
+  var LANE = { research: "bayes", stays: "bayes", education: "systems", work: "neuro", projects: "learning" };
 
   function h(tag, cls, html) {
     var e = document.createElement(tag);

@@ -1,4 +1,4 @@
-// The printable CV, in two languages. Facts come from the AboutMe vault source notes
+// The printable CV, in three languages. Facts come from the AboutMe vault source notes
 // (see 70-Documents/CV/CV — Research Internship — EN.md); nothing is invented here.
 //
 // This file is PUBLIC: it ships with the site. Phone, date of birth and the unpublished
@@ -28,12 +28,12 @@ window.CV = {
       "February 2027, as a step towards doctoral research.",
     labels: {
       research: "Research experience", education: "Education", work: "Professional experience",
-      projects: "Selected projects", skills: "Computing", methods: "Methods",
+      projects: "Selected projects", stays: "Undergraduate research stays", skills: "Computing", methods: "Methods",
       languages: "Languages", links: "Online", page: "Page"
     },
     pages: [
       { main: ["research", "education"], side: ["methods", "skills"] },
-      { main: ["work", "projects"], side: ["languages", "links"] }
+      { main: ["stays", "work", "projects"], side: ["languages", "links"] }
     ],
     research: [
       { id: "abante",
@@ -81,6 +81,23 @@ window.CV = {
         bullets: [
           "Courses: Numerical Mathematics · Neural Networks · Operating Systems.",
           "Team project: <b>CNN reconstruction</b> of Gaussian-blurred image regions (OpenImages)."
+        ] }
+    ],
+    stays: [
+      { title: "Research stay — Institute of Mathematics (IMATE)",
+        org: "UNAM · Dr. Guillermo Ramírez Santiago",
+        when: "01/2023 – 05/2023", where: "",
+        bullets: [
+          "Mathematical modelling of <b>active-matter systems</b> with fluid dynamics and tensor " +
+            "calculus, applied to bacterial aggregation into <b>biofilms</b>."
+        ] },
+      { title: "Research stay — Nanobiophotonics Laboratory",
+        org: "CFATA, UNAM · Dr. Luz López Marín",
+        when: "01/2022 – 05/2022", where: "Querétaro, Mexico",
+        bullets: [
+          "Wet-lab work on a <b>COVID-19 aptamer biosensor</b>, then <b>dendritic-cell</b> culture " +
+            "and activation under <b>shockwaves</b> (a cancer-immunotherapy angle); protocol design " +
+            "and reporting."
         ] }
     ],
     work: [
@@ -243,6 +260,163 @@ window.CV = {
       ["Anglais", "C1 · Cambridge C1, TOEFL iBT 105"],
       ["Français", "C1 · TCF"],
       ["Allemand", "A2"]
+    ]
+  },
+
+  // ------------------------------------------------------------------ ESPAÑOL (2 páginas)
+  es: {
+    htmlLang: "es",
+    title: "M2 Matemáticas Aplicadas y Estadística · Biología Computacional y Matemática",
+    city: "Marsella, Francia",
+    profile:
+      "Estudiante de máster (M2) en Matemáticas Aplicadas y Estadística (itinerario Computational &amp; " +
+      "Mathematical Biology) en la Universidad de Aix-Marsella. Trabajo con modelos probabilísticos y " +
+      "de espacio de estados de señales fisiológicas: la actividad eléctrica cardiaca en mi tesis de " +
+      "licenciatura y registros neuronales de fotometría de fibra óptica en el Abante Lab de " +
+      "Barcelona. Me muevo con soltura entre las matemáticas, la estadística, la computación científica " +
+      "y las ciencias de la vida. Busco unas prácticas de investigación de fin de estudios de seis " +
+      "meses, a partir de febrero de 2027, en modelización estadística y aprendizaje automático para " +
+      "la salud, como paso hacia el doctorado.",
+    labels: {
+      research: "Experiencia en investigación", education: "Formación",
+      work: "Experiencia profesional", projects: "Proyectos destacados", stays: "Estancias de investigación (licenciatura)", skills: "Informática",
+      methods: "Métodos", languages: "Idiomas", links: "En línea", page: "Página"
+    },
+    pages: [
+      { main: ["research", "education"], side: ["methods", "skills"] },
+      { main: ["stays", "work", "projects"], side: ["languages", "links"] }
+    ],
+    research: [
+      { id: "abante",
+        title: "Prácticas de investigación — Abante Lab",
+        org: "Universitat de Barcelona · IP: Jordi Abante (UBNeuro / IDIBAPS)",
+        when: "05/2026 – 07/2026", where: "Barcelona, España",
+        bullets: [
+          "Desarrollo de <b>photosvi</b>, un paquete modular de Python de modelos generativos para " +
+            "<b>señales de fotometría de fibra óptica</b>, aplicado al perfilado de la respuesta a " +
+            "fármacos; reestructuración de scripts de investigación en una arquitectura única basada " +
+            "en configuración.",
+          "Implementación de <b>inferencia variacional</b> (Pyro, SVI) con <b>decodificadores " +
+            "forward–backward y Viterbi en espacio logarítmico</b>, validados frente a oráculos de " +
+            "fuerza bruta.",
+          "Diseño del <b>benchmark</b> de cinco variantes de inferencia para la <b>detección de eventos " +
+            "fásicos y la recuperación del efecto del fármaco</b> frente a datos simulados; la variante " +
+            "seleccionada se convirtió en la referencia del laboratorio. <b>Artículo en preparación.</b>"
+        ] },
+      { id: "thesis",
+        title: "Tesis de licenciatura — Modelo difuso discreto de Takagi–Sugeno de la actividad eléctrica cardiaca",
+        org: "UNAM, Departamento de Inteligencia Artificial · financiada por el CONACYT",
+        when: "09/2024 – 03/2025", where: "Querétaro, México",
+        bullets: [
+          "Diseño e implementación de un <b>modelo difuso de Takagi–Sugeno</b> en tiempo discreto que " +
+            "reproduce la actividad eléctrica del corazón y genera el ECG en vivo a partir del modelo.",
+          "Generación de ritmos cardiacos <b>~400 % más rápida</b>, con errores de aproximación del " +
+            "<b>orden del milisegundo o menores</b>; ejecutable en un microcontrolador."
+        ] }
+    ],
+    education: [
+      { title: "Máster en Matemáticas Aplicadas y Estadística",
+        org: "Aix-Marseille Université · itinerario Computational &amp; Mathematical Biology (CMB)",
+        when: "09/2025 – actualidad", where: "Marsella, Francia",
+        bullets: ["Beca de excelencia de máster <b>TIGER</b>."] },
+      { title: "Licenciatura en Tecnología",
+        org: "Universidad Nacional Autónoma de México (UNAM)",
+        when: "09/2020 – 03/2025", where: "Querétaro, México",
+        bullets: [
+          "<b>Promedio 9.34/10, titulado con mención honorífica, top ~5 % de la generación.</b>",
+          "Programa interdisciplinario centrado en la investigación; optativas en computación y " +
+            "matemáticas."
+        ] },
+      { title: "Intercambio Erasmus",
+        org: "University of Groningen · beca completa de movilidad de excelencia de la UNAM",
+        when: "02/2024 – 07/2024", where: "Groninga, Países Bajos",
+        bullets: [
+          "Matemáticas Numéricas, Redes Neuronales, Sistemas Operativos; proyecto de " +
+            "<b>reconstrucción con CNN</b> de regiones de imagen desenfocadas (OpenImages)."
+        ] }
+    ],
+    stays: [
+      { title: "Estancia de investigación — Instituto de Matemáticas (IMATE)",
+        org: "UNAM · Dr. Guillermo Ramírez Santiago",
+        when: "01/2023 – 05/2023", where: "",
+        bullets: [
+          "Modelización matemática de <b>sistemas de materia activa</b> mediante dinámica de fluidos " +
+            "y cálculo tensorial, aplicada a la agregación bacteriana en <b>biopelículas</b>."
+        ] },
+      { title: "Estancia de investigación — Laboratorio de Nanobiofotónica",
+        org: "CFATA, UNAM · Dra. Luz López Marín",
+        when: "01/2022 – 05/2022", where: "Querétaro, México",
+        bullets: [
+          "Trabajo de laboratorio en un <b>biosensor de aptámeros para COVID-19</b> y, después, " +
+            "cultivo de <b>células dendríticas</b> y su activación con <b>ondas de choque</b> (con " +
+            "enfoque en inmunoterapia contra el cáncer); diseño de protocolos y reportes."
+        ] }
+    ],
+    work: [
+      { title: "Desarrollador de software junior",
+        org: "Intellect Design Arena Ltd",
+        when: "03/2025 – 07/2025", where: "Ciudad de México, México",
+        bullets: [
+          "Redacción de <b>historias de usuario</b> funcionales y técnicas y desarrollo de utilidades " +
+            "<b>Spring Boot</b> para aplicaciones de banca empresarial."
+        ] }
+    ],
+    projects: [
+      { title: "Simulación de transferencia de calor y propagación de incendios",
+        org: "UNAM · proyecto en equipo, después con el Dr. Solís",
+        when: "2022 – 2023", where: "Querétaro, México",
+        bullets: [
+          "Resolución numérica de la <b>EDP de transferencia de calor</b> a partir de una fotografía y " +
+            "una especificación del material (OpenCV), extendida a la <b>propagación de incendios " +
+            "sobre terreno 3D</b> con <b>recocido simulado</b>. <b>Mejor proyecto del año</b>; dio " +
+            "lugar a una invitación a colaborar con la SEMARNAT."
+        ] },
+      { title: "Predicción de humedad del suelo con CNN–LSTM",
+        org: "UNAM", when: "2024", where: "Querétaro, México",
+        bullets: [
+          "Arquitectura <b>CNN–LSTM</b> para la predicción de humedad a largo plazo sobre grandes " +
+            "conjuntos de datos globales en malla (Python, TensorFlow)."
+        ] },
+      { title: "Detección de bordes Sobel paralela en tiempo real",
+        org: "UNAM · optativas de procesamiento de imágenes y cómputo paralelo",
+        when: "2023", where: "Querétaro, México",
+        bullets: [
+          "Filtros, reducción de ruido y segmentación desde cero, culminando en un <b>detector Sobel " +
+            "paralelo en tiempo real</b> (C++, OpenMP, CUDA)."
+        ] },
+      { title: "Contaminación del aire y propagación de la COVID-19",
+        org: "UNAM · con un compañero", when: "2021", where: "Ciudad de México, México",
+        bullets: [
+          "Modelo estadístico que relaciona la contaminación por partículas con la propagación de la " +
+            "COVID-19; explicó <b>~8 % de los contagios</b> en la región estudiada."
+        ] },
+      { title: "Cove — app de aprendizaje de idiomas basada en un grafo de conceptos",
+        org: "Proyecto personal, en desarrollo", when: "2026 –", where: "",
+        bullets: [
+          "Un grafo de conceptos construido por quien aprende, a través de varios idiomas, con un " +
+            "núcleo gramatical basado en reglas y un generador calibrado a lo que contiene el grafo " +
+            "(Flutter, Dart, SQLite, spaCy)."
+        ] }
+    ],
+    methods: [
+      ["Inferencia bayesiana y variacional", "SVI, ELBO"],
+      ["Modelos de espacio de estados", "HMM, Deep Markov Models; forward–backward, Viterbi"],
+      ["Modelización estadística de señales fisiológicas", ""],
+      ["Métodos numéricos y computación científica", ""],
+      ["Aprendizaje automático, redes neuronales", ""]
+    ],
+    skills: [
+      ["Python", "Pyro, PyTorch, NumPy/SciPy: modelización probabilística y aprendizaje profundo"],
+      ["R", "Análisis estadístico"],
+      ["C++, CUDA, OpenMP", "Programación paralela y en GPU"],
+      ["Java, Spring Boot", "POO, aplicaciones empresariales"],
+      ["Linux/Unix, Bash, Git", "Servidores remotos, flujos de trabajo reproducibles"]
+    ],
+    languages: [
+      ["Español", "Lengua materna"],
+      ["Inglés", "C1 · Cambridge C1, TOEFL iBT 105"],
+      ["Francés", "C1 · TCF"],
+      ["Alemán", "A2"]
     ]
   }
 };
