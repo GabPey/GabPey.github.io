@@ -100,3 +100,13 @@ footer { border-top: 2px solid var(--line); margin-top: 44px; padding-top: 24px;
   .panel-inner { margin: 0; border: none; padding: 20px; min-height: 100%; }
 }
 @media (prefers-reduced-motion: reduce) { #hook::after { animation: none; } }
+
+/* CV buttons in the header */
+.cv-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+.pixbtn {
+  display: inline-block; padding: 10px 14px; font-size: 10px; line-height: 1.4;
+  color: var(--ink); text-decoration: none; background: var(--paper2);
+  border: 2px solid var(--bayes); box-shadow: 4px 4px 0 var(--line);
+}
+.pixbtn:hover, .pixbtn:focus-visible { background: var(--bayes); color: var(--paper); }
+.pixbtn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--line); }
