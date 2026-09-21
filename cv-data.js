@@ -86,7 +86,7 @@ window.CV = {
     stays: [
       { title: "Research stay — Institute of Mathematics (IMATE)",
         org: "UNAM · Dr. Guillermo Ramírez Santiago",
-        when: "01/2023 – 05/2023", where: "",
+        when: "01/2023 – 05/2023", where: "Juriquilla, Querétaro, Mexico",
         bullets: [
           "Mathematical modelling of <b>active-matter systems</b> with fluid dynamics and tensor " +
             "calculus, applied to bacterial aggregation into <b>biofilms</b>."
@@ -338,7 +338,7 @@ window.CV = {
     stays: [
       { title: "Estancia de investigación — Instituto de Matemáticas (IMATE)",
         org: "UNAM · Dr. Guillermo Ramírez Santiago",
-        when: "01/2023 – 05/2023", where: "",
+        when: "01/2023 – 05/2023", where: "Juriquilla, Querétaro, México",
         bullets: [
           "Modelización matemática de <b>sistemas de materia activa</b> mediante dinámica de fluidos " +
             "y cálculo tensorial, aplicada a la agregación bacteriana en <b>biopelículas</b>."
