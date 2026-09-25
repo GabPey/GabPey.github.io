@@ -53,7 +53,7 @@ window.CV = {
         ] },
       { id: "thesis",
         title: "Bachelor's Thesis — Discrete Fuzzy Takagi–Sugeno Model of Cardiac Electrical Activity",
-        org: "UNAM, Artificial Intelligence Department · funded by CONACYT",
+        org: "UNAM, Artificial Intelligence Department · funded by CONACYT · <a class='ext' href='https://ru.dgb.unam.mx/items/e20a496f-fc7a-4754-83cc-6650eeedba44'>full text (ES) ↗</a>",
         when: "09/2024 – 03/2025", where: "Querétaro, Mexico",
         bullets: [
           "Designed and implemented a discrete-time <b>Takagi–Sugeno fuzzy model</b> reproducing the " +
@@ -204,7 +204,7 @@ window.CV = {
         ] },
       { id: "thesis",
         title: "Mémoire de licence — Modèle flou discret de Takagi–Sugeno de l'activité électrique cardiaque",
-        org: "UNAM, département d'intelligence artificielle · financé par le CONACYT",
+        org: "UNAM, département d'intelligence artificielle · financé par le CONACYT · <a class='ext' href='https://ru.dgb.unam.mx/items/e20a496f-fc7a-4754-83cc-6650eeedba44'>texte intégral (ES) ↗</a>",
         when: "09/2024 – 03/2025", where: "Querétaro, Mexique",
         bullets: [
           "Modèle flou de <b>Takagi–Sugeno</b> en temps discret reproduisant l'activité électrique du " +
@@ -305,7 +305,7 @@ window.CV = {
         ] },
       { id: "thesis",
         title: "Tesis de licenciatura — Modelo difuso discreto de Takagi–Sugeno de la actividad eléctrica cardiaca",
-        org: "UNAM, Departamento de Inteligencia Artificial · financiada por el CONACYT",
+        org: "UNAM, Departamento de Inteligencia Artificial · financiada por el CONACYT · <a class='ext' href='https://ru.dgb.unam.mx/items/e20a496f-fc7a-4754-83cc-6650eeedba44'>texto completo ↗</a>",
         when: "09/2024 – 03/2025", where: "Querétaro, México",
         bullets: [
           "Diseño e implementación de un <b>modelo difuso de Takagi–Sugeno</b> en tiempo discreto que " +

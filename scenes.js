@@ -27,6 +27,16 @@
     this.raf = null;
   };
 
+  /* Scenes draw on a transparent canvas, so the page shows through; colours that would vanish
+     on a light page get a darker twin. Pages without data-theme (the arcade) stay dark. */
+  var PAL = {
+    dark:  { trace: "#5fa8ff", trace2: "#3f7ac0", spike: "#ffaa44", base: "#1b2540", track: "#2a2548", fiber: "#2f7d63",
+             ecg: "#ff5d6c", ecgBase: "#2a1a24", field: "#1d1a3a", field2: "#494476", edge: "#7e58d8", star: "#ffffff", word: "#3fd6a0" },
+    light: { trace: "#1f63c4", trace2: "#5b8fd6", spike: "#d27400", base: "#d5dbe8", track: "#cfcadf", fiber: "#0b7a57",
+             ecg: "#d8344a", ecgBase: "#ecd6db", field: "#e4e0ee", field2: "#b3acc9", edge: "#5b34d6", star: "#16132a", word: "#0b7a57" }
+  };
+  function pal() { return document.documentElement.getAttribute("data-theme") === "light" ? PAL.light : PAL.dark; }
+
   function px(ctx, x, y, w, h, col) { ctx.fillStyle = col; ctx.fillRect(x | 0, y | 0, w || 1, h || 1); }
 
   /* ---------- photosvi: a rat running a circle, a photometry trace above it ---------- */
@@ -62,7 +72,7 @@
 
   var trace = null;
   function photosvi(ctx, t, w, h) {
-    ctx.fillStyle = "#06050f"; ctx.fillRect(0, 0, w, h);
+    ctx.clearRect(0, 0, w, h); var P = pal();
     var i;
     if (!trace) { trace = []; for (i = 0; i < w; i++) trace.push(0); }
 
@@ -80,24 +90,24 @@
       amp *= 0.90;
       if (trace[i]) amp = 16;
       var y = y0 + 4 - amp + (Math.random() - 0.5) * 2.4 + Math.sin(i / 7 + t / 40) * 0.9;
-      px(ctx, i, y, 1, 1, amp > 1.2 ? "#ffaa44" : "#5fa8ff");
+      px(ctx, i, y, 1, 1, amp > 1.2 ? P.spike : P.trace);
       if (prev !== null && Math.abs(y - prev) > 1) {
         for (var k = Math.min(y, prev); k < Math.max(y, prev); k++)
-          px(ctx, i, k, 1, 1, amp > 1.2 ? "#ffaa44" : "#3f7ac0");
+          px(ctx, i, k, 1, 1, amp > 1.2 ? P.spike : P.trace2);
       }
       prev = y;
     }
-    px(ctx, 0, base + 4, w, 1, "#1b2540");
+    px(ctx, 0, base + 4, w, 1, P.base);
 
     // the rat, running an ellipse on the floor
     var cx = w / 2, cy = h * 0.72, rx = w * 0.30, ry = h * 0.15;
     var rxp = cx + Math.cos(ang) * rx, ryp = cy + Math.sin(ang) * ry;
     for (var a = 0; a < 64; a++) {          // the track it runs
       var aa = (a / 64) * Math.PI * 2;
-      px(ctx, cx + Math.cos(aa) * rx, cy + Math.sin(aa) * ry + 4, 1, 1, "#161328");
+      px(ctx, cx + Math.cos(aa) * rx, cy + Math.sin(aa) * ry + 4, 1, 1, P.track);
     }
     ratSprite(ctx, rxp - 20, ryp - 12, Math.sin(ang) < 0, (t / 5) | 0, 2);
-    for (var f = base + 6; f < ryp - 10; f += 3) px(ctx, rxp | 0, f, 1, 2, "#2f7d63");
+    for (var f = base + 6; f < ryp - 10; f += 3) px(ctx, rxp | 0, f, 1, 2, P.fiber);
   }
 
   /* ---------- the heart: a microcontroller computing, an ECG coming out ---------- */
@@ -107,7 +117,7 @@
     return g(.18, .022, -1.6) + g(.26, .012, 11) + g(.32, .018, -3.4) + g(.52, .055, 2.6) + g(.06, .03, 1.2);
   }
   function heart(ctx, t, w, h) {
-    ctx.fillStyle = "#06050f"; ctx.fillRect(0, 0, w, h);
+    ctx.clearRect(0, 0, w, h); var P = pal();
     var i, j;
     // pre-filled, so the strip is already running when the panel opens
     if (!ecg) { ecg = []; for (i = 0; i < w; i++) ecg.push(beatAt(((i * 2) % 56) / 56)); }
@@ -137,11 +147,11 @@
       var v = ecg[i + (cx + cw + 6)];
       var y = mid - v * 3.2 + (Math.random() - 0.5) * 0.7;
       var X = cx + cw + 6 + i;
-      px(ctx, X, y, 1, 1, "#ff5d6c");
-      if (prev !== null) for (var k = Math.min(y, prev); k < Math.max(y, prev); k++) px(ctx, X, k, 1, 1, "#ff5d6c");
+      px(ctx, X, y, 1, 1, P.ecg);
+      if (prev !== null) for (var k = Math.min(y, prev); k < Math.max(y, prev); k++) px(ctx, X, k, 1, 1, P.ecg);
       prev = y;
     }
-    px(ctx, cx + cw + 6, mid + 12, w - cx - cw - 6, 1, "#2a1a24");
+    px(ctx, cx + cw + 6, mid + 12, w - cx - cw - 6, 1, P.ecgBase);
   }
 
   /* ---------- Cove: a constellation assembling, with a word for "thank you" ---------- */
@@ -157,7 +167,7 @@
     return p;
   }
   function cove(ctx, t, w, h) {
-    ctx.fillStyle = "#06050f"; ctx.fillRect(0, 0, w, h);
+    ctx.clearRect(0, 0, w, h); var P = pal();
     if (!pts) pts = makePts(w, h);
     var CYCLE = 400, u = t % CYCLE, STEP = 16;
     if (u === 0) { pts = makePts(w, h); wordIdx = (wordIdx + 1) % WORDS.length; }
@@ -165,7 +175,7 @@
     for (var i = 0; i < 46; i++) {           // field: hashed, so it scatters instead of streaking
       var s1 = Math.sin(i * 127.1) * 43758.5453, s2 = Math.sin(i * 311.7) * 24634.6345;
       var fx = Math.floor((s1 - Math.floor(s1)) * w), fy = Math.floor((s2 - Math.floor(s2)) * h);
-      px(ctx, fx, fy, 1, 1, ((t / 30 + i) | 0) % 7 ? "#1d1a3a" : "#494476");
+      px(ctx, fx, fy, 1, 1, ((t / 30 + i) | 0) % 7 ? P.field : P.field2);
     }
     var shown = Math.min(pts.length, Math.floor(u / STEP));
     for (var k = 1; k < shown; k++) {        // edges draw in, pixel by pixel
@@ -175,19 +185,19 @@
       var steps = Math.max(Math.abs(ex - a.x), Math.abs(ey - a.y));
       for (var q = 0; q <= steps; q++) {
         var f = q / Math.max(steps, 1);
-        px(ctx, a.x + (ex - a.x) * f, a.y + (ey - a.y) * f, 1, 1, "#7e58d8");
+        px(ctx, a.x + (ex - a.x) * f, a.y + (ey - a.y) * f, 1, 1, P.edge);
       }
     }
     for (var m = 0; m < shown; m++) {
       var s = pts[m], pop = Math.min(1, (u - m * STEP) / 8);
       var r = 1 + Math.round(pop * 1.5);
-      px(ctx, s.x - r, s.y, r * 2 + 1, 1, "#ffffff");
-      px(ctx, s.x, s.y - r, 1, r * 2 + 1, "#ffffff");
+      px(ctx, s.x - r, s.y, r * 2 + 1, 1, P.star);
+      px(ctx, s.x, s.y - r, 1, r * 2 + 1, P.star);
     }
     if (u > pts.length * STEP) {               // the word the constellation spells
       var word = WORDS[wordIdx], fade = Math.min(1, (u - pts.length * STEP) / 24);
       ctx.globalAlpha = fade * (u > CYCLE - 60 ? Math.max(0, (CYCLE - u) / 60) : 1);
-      ctx.fillStyle = "#3fd6a0";
+      ctx.fillStyle = P.word;
       ctx.font = "10px 'Press Start 2P', monospace";
       ctx.textAlign = "center";
       ctx.fillText(word, w / 2, h - 8);

@@ -1,0 +1,112 @@
+@font-face {
+  font-family: "Press Start 2P";
+  src: url("../assets/PressStart2P.ttf") format("truetype");
+  font-display: swap;
+}
+:root {
+  --paper: #06050f; --paper2: #0d0b1f; --line: #241d4a;
+  --ink: #f4f2ff; --soft: #b9b2d8; --faint: #6f6a90;
+  --bayes: #9b6dff; --neuro: #ffaa44; --systems: #5fa8ff; --learning: #3fd6a0;
+}
+* { box-sizing: border-box; }
+html { background: var(--paper); }
+body {
+  margin: 0; padding: 0 20px 64px; overflow-wrap: break-word; background: var(--paper); color: var(--soft);
+  font-family: "Press Start 2P", ui-monospace, Menlo, Consolas, monospace;
+  font-size: 11px; line-height: 2.1; -webkit-font-smoothing: none;
+  max-width: 1120px; margin-inline: auto;
+}
+img, canvas { image-rendering: pixelated; image-rendering: crisp-edges; }
+h1, h2, h3 { font-weight: normal; line-height: 1.6; }
+a { color: var(--learning); }
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 8px; top: 8px; background: var(--bayes); color: #000; padding: 8px; z-index: 9; }
+
+.hero { display: flex; gap: 24px; align-items: flex-start; padding: 48px 0 8px; flex-wrap: wrap; }
+#avatar { width: 138px; height: 204px; flex: none; }
+.hero-text { flex: 1 1 300px; min-width: 0; }
+.langs { flex: 0 1 280px; min-width: 0; }
+.langs h2 { font-size: 11px; color: var(--learning); margin: 4px 0 16px; letter-spacing: 2px; }
+#lang-list { margin: 0; }
+.lang { margin: 0 0 12px; }
+.lang dt { color: var(--soft); font-size: 10px; margin-bottom: 5px; display: flex; justify-content: space-between; gap: 10px; }
+.lang dt .lv { color: var(--faint); }
+.lang dd { margin: 0; display: flex; gap: 2px; flex-wrap: wrap; }
+.lang .cell { width: 8px; height: 13px; background: var(--line); }
+.lang .cell.on { background: var(--learning); }
+h1 { font-size: 20px; color: var(--ink); margin: 0 0 14px; letter-spacing: 1px; }
+#title { color: var(--bayes); margin: 0 0 6px; }
+#hook { color: var(--soft); margin: 0 0 18px; }
+#hook::after { content: "_"; color: var(--learning); animation: blink 1.1s steps(2, end) infinite; }
+@keyframes blink { 0%, 50% { opacity: 1 } 51%, 100% { opacity: 0 } }
+.blurb { color: var(--faint); max-width: 46ch; }
+
+.quests { border-top: 2px solid var(--line); margin-top: 40px; padding-top: 28px; }
+h2 { font-size: 13px; color: var(--ink); margin: 0 0 20px; letter-spacing: 2px; }
+.quest { border: 2px solid var(--line); background: var(--paper2); padding: 16px 18px; margin: 0 0 14px; }
+.quest.is-current { border-color: var(--learning); }
+.quest.is-next { border-style: dashed; border-color: var(--neuro); }
+.quest .tag { display: inline-block; font-size: 9px; padding: 3px 7px; margin-bottom: 12px; color: #06050f; background: var(--faint); }
+.quest.is-current .tag { background: var(--learning); }
+.quest.is-next .tag { background: var(--neuro); }
+.quest h4 { margin: 0 0 6px; font-size: 12px; color: var(--ink); font-weight: normal; line-height: 1.7; }
+.quest .meta { color: var(--faint); font-size: 10px; margin: 0 0 10px; }
+.quest .loot { color: var(--bayes); font-size: 10px; margin: 0 0 8px; }
+.quest .note { margin: 0; color: var(--soft); font-size: 10px; line-height: 2; }
+.done-h { font-size: 11px; color: var(--faint); letter-spacing: 2px; margin: 30px 0 14px; }
+#quest-done { list-style: none; margin: 0; padding: 0; }
+
+#map { border-top: 2px solid var(--line); margin-top: 44px; padding-top: 28px; }
+.hint { color: var(--faint); font-size: 10px; margin: -10px 0 18px; }
+#chart-wrap { width: 100%; overflow: hidden; }
+svg#chart { width: 100%; height: auto; display: block; }
+svg#chart text { font-family: "Press Start 2P", monospace; }
+.star-hit { cursor: pointer; }
+.star-hit:focus { outline: 2px solid var(--learning); outline-offset: 2px; }
+.star-hit .halo { opacity: 0; transition: opacity .16s steps(2, end); }
+.star-hit:hover .halo, .star-hit:focus .halo { opacity: .5; }
+
+.panel { position: fixed; inset: 0; background: rgba(3, 2, 8, .92); overflow-y: auto; z-index: 20; padding: 24px; }
+.panel[hidden] { display: none; }
+.panel-inner { max-width: 760px; margin: 32px auto; border: 2px solid var(--line); background: var(--paper2); padding: 28px; position: relative; }
+#panel-close { position: absolute; top: 10px; right: 10px; background: none; border: 2px solid var(--line); color: var(--soft); font: inherit; font-size: 11px; padding: 6px 10px; cursor: pointer; }
+#panel-close:hover { border-color: var(--learning); color: var(--learning); }
+#panel-canvas { width: 100%; max-width: 600px; height: auto; display: block; margin: 0 auto 26px; border: 2px solid var(--line); background: var(--paper); }
+#panel-title { font-size: 16px; color: var(--ink); margin: 0 0 8px; }
+.kicker { color: var(--faint); font-size: 10px; margin: 0 0 18px; }
+.lede { color: var(--learning); margin: 0 0 20px; line-height: 2; }
+#panel-body p { color: var(--soft); line-height: 2.1; margin: 0 0 16px; font-size: 10px; }
+.stack { list-style: none; padding: 0; margin: 20px 0 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.stack li { font-size: 9px; border: 2px solid var(--line); padding: 5px 8px; color: var(--soft); }
+.note { color: var(--faint); font-size: 9px; margin: 0; }
+
+footer { border-top: 2px solid var(--line); margin-top: 44px; padding-top: 24px; font-size: 10px; }
+.colophon { color: var(--faint); font-size: 9px; }
+
+@media (max-width: 900px) { .langs { flex-basis: 100%; } }
+@media (max-width: 620px) {
+  body { font-size: 10px; padding: 0 14px 40px; }
+  h1 { font-size: 15px; }
+  .hero-text { flex-basis: 100%; }
+  #avatar { width: 104px; height: 154px; }
+  .lang .cell { width: 7px; height: 12px; }
+}
+@media (max-width: 430px) {
+  h1 { font-size: 12px; letter-spacing: 0; }
+  body { font-size: 9px; }
+  .lang .cell { width: 6px; }
+  .hero { gap: 16px; padding-top: 32px; }
+  .panel { padding: 0; }
+  .panel-inner { margin: 0; border: none; padding: 20px; min-height: 100%; }
+}
+@media (prefers-reduced-motion: reduce) { #hook::after { animation: none; } }
+
+/* CV buttons in the header */
+.cv-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+.pixbtn {
+  display: inline-block; padding: 10px 14px; font-size: 10px; line-height: 1.4;
+  color: var(--ink); text-decoration: none; background: var(--paper2);
+  border: 2px solid var(--bayes); box-shadow: 4px 4px 0 var(--line);
+}
+.pixbtn:hover, .pixbtn:focus-visible { background: var(--bayes); color: var(--paper); }
+.pixbtn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--line); }

@@ -4,67 +4,95 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gabriel Peytral Borja</title>
-<meta name="description" content="Computational and mathematical biologist. Probabilistic models of hearts, neurons, and how a person learns a language.">
-<link rel="stylesheet" href="style.css?v=20260921c">
+<meta name="description" content="Gabriel Peytral Borja: M2 Applied Mathematics & Statistics (Computational & Mathematical Biology) at Aix-Marseille Université. Probabilistic models of hearts, neurons, and how a person learns a language.">
+<script>
+  // Set the theme before first paint: the visitor's saved choice, else light.
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    document.documentElement.setAttribute("data-theme", t === "dark" ? "dark" : "light");
+  })();
+</script>
+<link rel="stylesheet" href="style.css?v=20260925e">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%2306050f'/><rect x='7' y='3' width='2' height='2' fill='%239b6dff'/><rect x='3' y='8' width='2' height='2' fill='%23ffaa44'/><rect x='11' y='9' width='2' height='2' fill='%233fd6a0'/></svg>">
 </head>
 <body>
-<a class="skip" href="#map">Skip to the map</a>
+<a class="skip" href="#main">Skip to content</a>
 
-<header class="hero">
-  <canvas id="avatar" role="img" aria-label="Pixel-art figure of Gabriel Peytral Borja, waving"></canvas>
-  <div class="hero-text">
-    <h1 id="name"></h1>
-    <p id="title"></p>
-    <p id="hook"></p>
-    <p id="blurb" class="blurb"></p>
-    <nav class="cv-links" aria-label="Curriculum vitae">
-      <a class="pixbtn" href="cv.html?lang=en">CV &middot; ENGLISH</a>
-      <a class="pixbtn" href="cv.html?lang=fr">CV &middot; FRAN&Ccedil;AIS</a>
-      <a class="pixbtn" href="cv.html?lang=es">CV &middot; ESPA&Ntilde;OL</a>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top" aria-label="Gabriel Peytral Borja, home">GPB<span class="cursor" aria-hidden="true">_</span></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#experience">Experience</a>
+      <a href="#outside">Outside</a>
+      <a href="cv.html?lang=en">CV</a>
     </nav>
-  </div>
-  <div class="langs" aria-labelledby="langs-h">
-    <h2 id="langs-h">LANGUAGES</h2>
-    <dl id="lang-list"></dl>
+    <button id="theme" class="theme" type="button" aria-label="Switch to dark theme">
+      <span class="sun" aria-hidden="true"></span><span class="moon" aria-hidden="true"></span>
+    </button>
   </div>
 </header>
 
-<section class="quests" aria-labelledby="quests-h">
-  <h2 id="quests-h">QUEST LOG</h2>
-  <div id="quest-current"></div>
-  <div id="quest-next"></div>
-  <h3 class="done-h">COMPLETED</h3>
-  <ol id="quest-done"></ol>
-</section>
+<div class="layout" id="top">
+  <aside class="card" aria-label="Profile">
+    <img id="photo" class="photo" width="200" height="200" alt="Portrait of Gabriel Peytral Borja">
+    <h1 id="name"></h1>
+    <p id="role" class="role"></p>
+    <ul class="facts">
+      <li><span class="ico ico-pin" aria-hidden="true"></span><span id="city"></span></li>
+      <li><span class="ico ico-mail" aria-hidden="true"></span><a id="email"></a></li>
+      <li><span class="ico ico-gh" aria-hidden="true"></span><a id="github"></a></li>
+    </ul>
+    <div class="cv-box">
+      <p class="label">Curriculum vitae</p>
+      <ul id="cv-list" class="cv-list"></ul>
+    </div>
+    <div class="langs">
+      <p class="label">Languages</p>
+      <dl id="lang-list"></dl>
+    </div>
+  </aside>
 
-<section id="map" aria-labelledby="map-h">
-  <h2 id="map-h">THE MAP</h2>
-  <p class="hint">The three bright stars are projects. Open one.</p>
-  <div id="chart-wrap"></div>
-</section>
+  <main id="main">
+    <section id="about" aria-labelledby="about-h">
+      <p class="label">About</p>
+      <h2 id="about-h" class="tagline"></h2>
+      <div id="about-body" class="prose"></div>
+      <aside id="seeking" class="seeking"></aside>
+    </section>
 
-<footer>
-  <p id="contact"></p>
-  <p class="colophon">Drawn pixel by pixel. No frameworks, no trackers, no external requests.</p>
-</footer>
+    <section id="research" aria-labelledby="research-h">
+      <p class="label">Research &amp; projects</p>
+      <h2 id="research-h">What I work on</h2>
+      <div id="research-list"></div>
+    </section>
 
-<div id="panel" class="panel" role="dialog" aria-modal="true" aria-labelledby="panel-title" hidden>
-  <div class="panel-inner">
-    <button id="panel-close" aria-label="Close">X</button>
-    <canvas id="panel-canvas" aria-hidden="true"></canvas>
-    <h2 id="panel-title"></h2>
-    <p id="panel-kicker" class="kicker"></p>
-    <p id="panel-lede" class="lede"></p>
-    <div id="panel-body"></div>
-    <ul id="panel-stack" class="stack"></ul>
-    <p id="panel-note" class="note"></p>
-  </div>
+    <section id="experience" aria-labelledby="exp-h">
+      <p class="label">Experience &amp; education</p>
+      <h2 id="exp-h">Timeline</h2>
+      <ol id="timeline" class="timeline"></ol>
+    </section>
+
+    <section id="outside" aria-labelledby="out-h">
+      <p class="label">Outside the lab</p>
+      <h2 id="out-h">When I am not in front of a computer</h2>
+      <ul id="outside-list" class="outside"></ul>
+    </section>
+
+    <footer>
+      <div class="arcade">
+        <canvas id="sprite" role="img" aria-label="Pixel-art figure of Gabriel, waving"></canvas>
+        <p>Prefer pixels? <a href="arcade/">Play the 8-bit version</a>, where the CV is a quest log.</p>
+      </div>
+      <p class="colophon">Hand-written HTML, CSS and JavaScript. No frameworks, no trackers, no external requests.</p>
+    </footer>
+  </main>
 </div>
 
-<script src="chart.js?v=20260921c"></script>
-<script src="data.js?v=20260921c"></script>
-<script src="scenes.js?v=20260921c"></script>
-<script src="app.js?v=20260921c"></script>
+<script src="data.js?v=20260925e"></script>
+<script src="scenes.js?v=20260925e"></script>
+<script src="app.js?v=20260925e"></script>
 </body>
 </html>

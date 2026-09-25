@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gabriel Peytral Borja · Arcade</title>
+<meta name="description" content="Computational and mathematical biologist. Probabilistic models of hearts, neurons, and how a person learns a language.">
+<link rel="stylesheet" href="style.css?v=20260921c">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%2306050f'/><rect x='7' y='3' width='2' height='2' fill='%239b6dff'/><rect x='3' y='8' width='2' height='2' fill='%23ffaa44'/><rect x='11' y='9' width='2' height='2' fill='%233fd6a0'/></svg>">
+</head>
+<body>
+<a class="skip" href="#map">Skip to the map</a>
+
+<header class="hero">
+  <canvas id="avatar" role="img" aria-label="Pixel-art figure of Gabriel Peytral Borja, waving"></canvas>
+  <div class="hero-text">
+    <h1 id="name"></h1>
+    <p id="title"></p>
+    <p id="hook"></p>
+    <p id="blurb" class="blurb"></p>
+    <nav class="cv-links" aria-label="Curriculum vitae">
+      <a class="pixbtn" href="../cv.html?lang=en">CV &middot; ENGLISH</a>
+      <a class="pixbtn" href="../cv.html?lang=fr">CV &middot; FRAN&Ccedil;AIS</a>
+      <a class="pixbtn" href="../cv.html?lang=es">CV &middot; ESPA&Ntilde;OL</a>
+    </nav>
+  </div>
+  <div class="langs" aria-labelledby="langs-h">
+    <h2 id="langs-h">LANGUAGES</h2>
+    <dl id="lang-list"></dl>
+  </div>
+</header>
+
+<section class="quests" aria-labelledby="quests-h">
+  <h2 id="quests-h">QUEST LOG</h2>
+  <div id="quest-current"></div>
+  <div id="quest-next"></div>
+  <h3 class="done-h">COMPLETED</h3>
+  <ol id="quest-done"></ol>
+</section>
+
+<section id="map" aria-labelledby="map-h">
+  <h2 id="map-h">THE MAP</h2>
+  <p class="hint">The three bright stars are projects. Open one.</p>
+  <div id="chart-wrap"></div>
+</section>
+
+<footer>
+  <p id="contact"></p>
+  <p class="colophon"><a href="../">Back to the plain version</a> · Drawn pixel by pixel. No frameworks, no trackers, no external requests.</p>
+</footer>
+
+<div id="panel" class="panel" role="dialog" aria-modal="true" aria-labelledby="panel-title" hidden>
+  <div class="panel-inner">
+    <button id="panel-close" aria-label="Close">X</button>
+    <canvas id="panel-canvas" aria-hidden="true"></canvas>
+    <h2 id="panel-title"></h2>
+    <p id="panel-kicker" class="kicker"></p>
+    <p id="panel-lede" class="lede"></p>
+    <div id="panel-body"></div>
+    <ul id="panel-stack" class="stack"></ul>
+    <p id="panel-note" class="note"></p>
+  </div>
+</div>
+
+<script src="../chart.js?v=20260921c"></script>
+<script src="data.js?v=20260921c"></script>
+<script src="../scenes.js?v=20260921c"></script>
+<script src="app.js?v=20260921c"></script>
+</body>
+</html>

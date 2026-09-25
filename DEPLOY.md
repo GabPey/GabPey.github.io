@@ -23,10 +23,12 @@ git add -A && git commit -m "Publish the 8-bit site" && git push
 
 | File | Contents |
 |---|---|
-| `data.js` | **every string on the page** — quest log, project write-ups, contact |
+| `data.js` | **every string on the main (plain) page**: about, research, timeline, contact |
+| `arcade/` | the original 8-bit page (quest log, panels) at `/arcade/`; own `index.html`/`style.css`/`app.js`/`data.js`, shares `../chart.js`, `../scenes.js`, `../assets/` |
 | `chart.js` | **generated** from `Bios/GitHub-Profile/constellation8.py`; do not hand-edit |
 | `scenes.js` | the three canvas animations, **plus the waving avatar sprite** |
-| `app.js` | renders the chart as live SVG, fills the quest log, hash router for panels |
+| `app.js` | fills the plain page, chart as live SVG (stars scroll to projects), scenes run only on screen, light/dark switch (saved in localStorage, else OS preference) |
+| `assets/avatar.jpg` | site photo: casual on purpose; the formal portrait is `photo.jpg`, CV only |
 | `cv.html` · `cv.css` · `cv.js` | the printable CV, `?lang=en` (2 pp) / `?lang=fr` (1 p) |
 | `cv-data.js` | **every string on the CV**, EN + FR. Public; private details live in `../CV/cv-private.js` (never copy that) |
 | `cv/*.pdf` | **generated** by `70-Documents/CV/build-cv.sh`; rebuild after editing `cv-data.js` |
