@@ -38,7 +38,7 @@ window.CV = {
     research: [
       { id: "abante",
         title: "Research Intern — Abante Lab",
-        org: "Universitat de Barcelona · PI: Jordi Abante (UBNeuro / IDIBAPS)",
+        org: "Universitat de Barcelona · PI: Jordi Abante (UBNeuro / IDIBAPS) · funded by Erasmus+",
         when: "05/2026 – 07/2026", where: "Barcelona, Spain",
         bullets: [
           "Developed <b>photosvi</b>, a composable Python package of generative models for " +
@@ -190,7 +190,7 @@ window.CV = {
     research: [
       { id: "abante",
         title: "Stage de recherche — Abante Lab",
-        org: "Universitat de Barcelona · resp. Jordi Abante (UBNeuro / IDIBAPS)",
+        org: "Universitat de Barcelona · resp. Jordi Abante (UBNeuro / IDIBAPS) · financé par Erasmus+",
         when: "05/2026 – 07/2026", where: "Barcelone, Espagne",
         bullets: [
           "Développement de <b>photosvi</b>, un package Python de modèles génératifs pour les " +
@@ -289,13 +289,12 @@ window.CV = {
     research: [
       { id: "abante",
         title: "Prácticas de investigación — Abante Lab",
-        org: "Universitat de Barcelona · IP: Jordi Abante (UBNeuro / IDIBAPS)",
+        org: "Universitat de Barcelona · IP: Jordi Abante (UBNeuro / IDIBAPS) · beca Erasmus+",
         when: "05/2026 – 07/2026", where: "Barcelona, España",
         bullets: [
           "Desarrollo de <b>photosvi</b>, un paquete modular de Python de modelos generativos para " +
             "<b>señales de fotometría de fibra óptica</b>, aplicado al perfilado de la respuesta a " +
-            "fármacos; reestructuración de scripts de investigación en una arquitectura única basada " +
-            "en configuración.",
+            "fármacos.",
           "Implementación de <b>inferencia variacional</b> (Pyro, SVI) con <b>decodificadores " +
             "forward–backward y Viterbi en espacio logarítmico</b>, validados frente a oráculos de " +
             "fuerza bruta.",
